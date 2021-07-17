@@ -2,7 +2,7 @@ const area = document.getElementById('area');
 let move = 0;
 let result = '';
 const contentWrapper = document.getElementById('content');
-const modalResult = document.getElementById('modal-result-wrapper');
+const resultWindow = document.getElementById('result-wrapper');
 const overlay = document.getElementById('overlay');
 const btnClose = document.getElementById('btn-close');
 
@@ -31,24 +31,29 @@ const check = () => {
 
     for (i = 0; i < arr.length; i++) {
         if (boxes[arr[i][0]].innerHTML == 'x' && boxes[arr[i][1]].innerHTML == 'x' && boxes[arr[i][2]].innerHTML == 'x') {
-            result = 'tic';
+            result = 'Won X';
             prepareResult(result);
+            break;
         } else if (boxes[arr[i][0]].innerHTML == 'o' && boxes[arr[i][1]].innerHTML == 'o' && boxes[arr[i][2]].innerHTML == 'o') {
-            result = 'toes';
+            result = 'Won O';
+            prepareResult(result);
+            break;
+        } else if (move === 9) {
+            result = 'Draw';
             prepareResult(result);
         }
     }
 }
 
 const prepareResult = winner => {
-    contentWrapper.innerHTML = `Won ${winner} !`;
-    modalResult.style.display = 'block';
+    contentWrapper.innerHTML = `${winner}!`;
+    resultWindow.style.display = 'block';
 }
 
-const closeModal = () => {
-    modalResult.style.display = 'none';
+const closeResultWindow = () => {
+    resultWindow.style.display = 'none';
     location.reload();
 }
 
-overlay.addEventListener('click', closeModal);
-btnClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeResultWindow);
+btnClose.addEventListener('click', closeResultWindow);

@@ -8,8 +8,8 @@ const btnClose = document.getElementById('btn-close');
 
 area.addEventListener('click', e => {
     if (e.target.className = 'box') {
-        if (e.target.innerHTML !== 'X' && e.target.innerHTML !== 'O') {
-            move % 2 === 0 ? e.target.innerHTML = 'X' : e.target.innerHTML = 'O';
+        if (e.target.innerHTML !== 'x' && e.target.innerHTML !== 'o') {
+            move % 2 === 0 ? e.target.innerHTML = 'x' : e.target.innerHTML = 'o';
             move++;
             check();
         }
@@ -30,18 +30,18 @@ const check = () => {
     ];
 
     for (i = 0; i < arr.length; i++) {
-        if (boxes[arr[i][0]].innerHTML == 'X' && boxes[arr[i][1]].innerHTML == 'X' && boxes[arr[i][2]].innerHTML == 'X') {
-            result = 'Tic';
+        if (boxes[arr[i][0]].innerHTML == 'x' && boxes[arr[i][1]].innerHTML == 'x' && boxes[arr[i][2]].innerHTML == 'x') {
+            result = 'tic';
             prepareResult(result);
-        } else if (boxes[arr[i][0]].innerHTML == 'O' && boxes[arr[i][1]].innerHTML == 'O' && boxes[arr[i][2]].innerHTML == 'O') {
-            result = 'Tac';
+        } else if (boxes[arr[i][0]].innerHTML == 'o' && boxes[arr[i][1]].innerHTML == 'o' && boxes[arr[i][2]].innerHTML == 'o') {
+            result = 'toes';
             prepareResult(result);
         }
     }
 }
 
 const prepareResult = winner => {
-    contentWrapper.innerHTML = `Win ${winner} !`;
+    contentWrapper.innerHTML = `Won ${winner} !`;
     modalResult.style.display = 'block';
 }
 
